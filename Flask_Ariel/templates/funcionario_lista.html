@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+        <div class="message">
+            {{ msg }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <a href="/funcionario/add">+ Adicionar</a>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>Data</th>
+            <th>Edita</th>
+            <th>Remove</th>
+        </tr>
+        {% for funcionario in dados %}
+        <tr>
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.cargo}}</td>
+            <td>{{funcionario.data_admissao}}</td>
+            <td>
+                <a href="/funcionario/edita/{{funcionario.id_produto}}">Editar</a>
+            </td>
+            <td>
+                <a href="/funcionario/remove/{{funcionario.id_produto}}">remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

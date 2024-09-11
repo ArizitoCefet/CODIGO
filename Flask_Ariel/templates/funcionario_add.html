@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+        <div class="message">
+            {{ msg }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/funcionario/save" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+        <label for="cargo">Cargo:</label>
+        <input type="text" name="cargo" id="cargo">
+        <label for="data_admissao">Data:</label>
+        <input type="date" name="data_admissao" id="data_admissao">
+        <button type="submit">Salvar</button>
+    </form>
+
+{% endblock %}
